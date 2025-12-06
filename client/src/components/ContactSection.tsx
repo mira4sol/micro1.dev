@@ -6,8 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { MapPin, Mail, Building2, Clock, Send, CheckCircle, Calendar } from 'lucide-react';
-import { SiX, SiWhatsapp, SiLinkedin } from 'react-icons/si';
+import { MapPin, Mail, Building2, Clock, Send, CheckCircle } from 'lucide-react';
+import { SiX, SiWhatsapp, SiLinkedin, SiTelegram, SiCalendly } from 'react-icons/si';
 import { useToast } from '@/hooks/use-toast';
 
 export default function ContactSection() {
@@ -128,40 +128,71 @@ export default function ContactSection() {
                     />
                   </div>
                   
-                  <div className="flex flex-col sm:flex-row items-center gap-4">
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full sm:w-auto"
-                      disabled={isSubmitting}
-                      data-testid="button-submit-contact"
-                    >
-                      {isSubmitting ? (
-                        <>Sending...</>
-                      ) : (
-                        <>
-                          Send Message
-                          <Send className="ml-2 h-4 w-4" />
-                        </>
-                      )}
-                    </Button>
-                    
-                    <span className="text-muted-foreground text-sm">or</span>
-                    
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="lg"
-                      className="w-full sm:w-auto"
-                      onClick={() => window.open('https://calendly.com/micro1', '_blank')}
-                      data-testid="button-calendly"
-                    >
-                      <Calendar className="mr-2 h-4 w-4" />
-                      Book on Calendly
-                    </Button>
-                  </div>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full sm:w-auto"
+                    disabled={isSubmitting}
+                    data-testid="button-submit-contact"
+                  >
+                    {isSubmitting ? (
+                      <>Sending...</>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send className="ml-2 h-4 w-4" />
+                      </>
+                    )}
+                  </Button>
                 </form>
               )}
+              
+              <div className="mt-8 pt-6 border-t border-border">
+                <p className="text-muted-foreground text-sm mb-4">Prefer not to fill out forms?</p>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => window.open('https://twitter.com/micro1dev', '_blank')}
+                    data-testid="button-twitter"
+                  >
+                    <SiX className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => window.open('https://linkedin.com/company/micro1', '_blank')}
+                    data-testid="button-linkedin"
+                  >
+                    <SiLinkedin className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => window.open('https://wa.me/message/micro1', '_blank')}
+                    data-testid="button-whatsapp"
+                  >
+                    <SiWhatsapp className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => window.open('https://t.me/micro1dev', '_blank')}
+                    data-testid="button-telegram"
+                  >
+                    <SiTelegram className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => window.open('https://calendly.com/micro1', '_blank')}
+                    data-testid="button-calendly"
+                  >
+                    <SiCalendly className="w-4 h-4 mr-2" />
+                    Book a call
+                  </Button>
+                </div>
+              </div>
             </CardContent>
           </Card>
 
@@ -237,42 +268,6 @@ export default function ContactSection() {
               </CardContent>
             </Card>
 
-            <Card className="border-card-border">
-              <CardContent className="p-6">
-                <h3 className="font-semibold mb-4">Connect With Us</h3>
-                <div className="flex flex-wrap gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => window.open('https://twitter.com/micro1dev', '_blank')}
-                    data-testid="button-twitter"
-                  >
-                    <SiX className="w-4 h-4 mr-2" />
-                    Twitter
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => window.open('https://wa.me/message/micro1', '_blank')}
-                    data-testid="button-whatsapp"
-                    className="text-green-600 dark:text-green-400 border-green-600/30 dark:border-green-400/30"
-                  >
-                    <SiWhatsapp className="w-4 h-4 mr-2" />
-                    WhatsApp
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => window.open('https://linkedin.com/company/micro1', '_blank')}
-                    data-testid="button-linkedin"
-                    className="text-blue-600 dark:text-blue-400 border-blue-600/30 dark:border-blue-400/30"
-                  >
-                    <SiLinkedin className="w-4 h-4 mr-2" />
-                    LinkedIn
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>

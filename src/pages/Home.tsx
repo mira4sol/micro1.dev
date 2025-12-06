@@ -1,12 +1,11 @@
-import Navigation from '@/components/Navigation';
-import HeroSection from '@/components/HeroSection';
-import ServicesSection from '@/components/ServicesSection';
-import ProjectsSection from '@/components/ProjectsSection';
-import ProcessSection from '@/components/ProcessSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import HeroSection from '@/components/HeroSection';
+import Navigation from '@/components/Navigation';
+import ProcessSection from '@/components/ProcessSection';
+import ProjectsSection from '@/components/ProjectsSection';
+import ServicesSection from '@/components/ServicesSection';
 import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
@@ -28,7 +27,7 @@ export default function Home() {
         <ServicesSection />
         <ProjectsSection />
         <ProcessSection />
-        <TestimonialsSection />
+        {/* <TestimonialsSection /> */}
         <AboutSection />
         <ContactSection />
       </main>

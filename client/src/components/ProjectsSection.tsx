@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 type ProjectCategory = 'all' | 'web2' | 'web3' | 'mobile';
 
@@ -91,82 +92,179 @@ export default function ProjectsSection() {
   );
 
   return (
-    <section id="projects" className="py-20 md:py-32 bg-card">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <Badge variant="secondary" className="mb-4">Our Work</Badge>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+    <section id="projects" className="py-20 md:py-32 bg-card relative overflow-hidden">
+      <motion.div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-primary/5 to-transparent blur-3xl"
+        animate={{
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div
+            initial={{ scale: 0, rotate: -180 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+          >
+            <Badge variant="secondary" className="mb-4">Our Work</Badge>
+          </motion.div>
+          <motion.h2
+            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             Featured <span className="text-primary">Projects</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            className="text-muted-foreground text-lg max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             Explore our portfolio of successful projects across Web2, Web3, and mobile platforms.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {filters.map((filter) => (
-            <Button
+        <motion.div
+          className="flex flex-wrap justify-center gap-2 mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
+          {filters.map((filter, index) => (
+            <motion.div
               key={filter.value}
-              variant={activeFilter === filter.value ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setActiveFilter(filter.value)}
-              data-testid={`button-filter-${filter.value}`}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 + index * 0.1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {filter.label}
-            </Button>
+              <Button
+                variant={activeFilter === filter.value ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setActiveFilter(filter.value)}
+                data-testid={`button-filter-${filter.value}`}
+              >
+                {filter.label}
+              </Button>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
-            <Card
-              key={project.id}
-              className="group overflow-hidden border-card-border hover-elevate active-elevate-2 transition-all duration-300"
-              data-testid={`card-project-${project.id}`}
-            >
-              <div className="relative aspect-video overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4 gap-2">
-                  {project.liveUrl && (
-                    <Button size="sm" variant="secondary" className="gap-1.5" data-testid={`button-project-live-${project.id}`}>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      Live Demo
-                    </Button>
-                  )}
-                  {project.githubUrl && (
-                    <Button size="sm" variant="outline" className="gap-1.5 bg-white/10 border-white/30 text-white" data-testid={`button-project-github-${project.id}`}>
-                      <Github className="w-3.5 h-3.5" />
-                      Code
-                    </Button>
-                  )}
-                </div>
-              </div>
-              <CardContent className="p-5">
-                <h3 className="font-display text-lg font-semibold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tags.slice(0, 3).map((tag) => (
-                    <Badge key={tag} variant="secondary" className="text-xs">
-                      {tag}
-                    </Badge>
-                  ))}
-                  {project.tags.length > 3 && (
-                    <Badge variant="outline" className="text-xs">
-                      +{project.tags.length - 3}
-                    </Badge>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 25,
+                  delay: index * 0.05,
+                }}
+                whileHover={{ y: -8 }}
+              >
+                <Card
+                  className="group overflow-hidden border-card-border transition-all duration-300 h-full"
+                  data-testid={`card-project-${project.id}`}
+                >
+                  <div className="relative aspect-video overflow-hidden">
+                    <motion.img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center pb-4 gap-2"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {project.liveUrl && (
+                        <motion.div
+                          initial={{ y: 20, opacity: 0 }}
+                          whileHover={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.1 }}
+                        >
+                          <Button size="sm" variant="secondary" className="gap-1.5" data-testid={`button-project-live-${project.id}`}>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            Live Demo
+                          </Button>
+                        </motion.div>
+                      )}
+                      {project.githubUrl && (
+                        <motion.div
+                          initial={{ y: 20, opacity: 0 }}
+                          whileHover={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          <Button size="sm" variant="outline" className="gap-1.5 bg-white/10 border-white/30 text-white" data-testid={`button-project-github-${project.id}`}>
+                            <Github className="w-3.5 h-3.5" />
+                            Code
+                          </Button>
+                        </motion.div>
+                      )}
+                    </motion.div>
+                  </div>
+                  <CardContent className="p-5">
+                    <motion.h3
+                      className="font-display text-lg font-semibold mb-2"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                    >
+                      {project.title}
+                    </motion.h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <Badge key={tag} variant="secondary" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                      {project.tags.length > 3 && (
+                        <Badge variant="outline" className="text-xs">
+                          +{project.tags.length - 3}
+                        </Badge>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );

@@ -56,7 +56,7 @@ export default function AboutSection() {
             <div className="mt-8 pt-8 border-t border-border">
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <div className="font-display text-3xl font-bold text-primary mb-1">2019</div>
+                  <div className="font-display text-3xl font-bold text-primary mb-1">2025</div>
                   <div className="text-sm text-muted-foreground">Year Founded</div>
                 </div>
                 <div>

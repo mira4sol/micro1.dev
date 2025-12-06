@@ -56,11 +56,12 @@ export default function HeroSection({ onGetStarted, onViewProjects }: HeroSectio
           </Button>
         </div>
         
-        <div className="mt-20 grid grid-cols-3 gap-8 max-w-3xl mx-auto">
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
           {[
             { value: '5+', label: 'Projects Delivered' },
             { value: '10+', label: 'Years Combined Experience' },
             { value: '5+', label: 'Happy Clients' },
+            { value: '100%', label: 'Client Satisfaction' },
           ].map((stat) => (
             <div key={stat.label} className="text-center" data-testid={`stat-${stat.label.toLowerCase().replace(' ', '-')}`}>
               <div className="font-display text-3xl sm:text-4xl font-bold text-white mb-1">

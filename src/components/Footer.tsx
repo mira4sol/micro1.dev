@@ -1,4 +1,4 @@
-import { SiGithub, SiLinkedin, SiX, SiWhatsapp, SiTelegram } from 'react-icons/si';
+import { companyInfo, socialLinks } from '@/config/socials';
 
 const navigation = {
   services: [
@@ -13,11 +13,9 @@ const navigation = {
     { name: 'Contact', href: '#contact' },
   ],
   social: [
-    { name: 'GitHub', href: 'https://github.com/micro1dev', icon: SiGithub },
-    { name: 'LinkedIn', href: 'https://linkedin.com/company/micro1', icon: SiLinkedin },
-    { name: 'X', href: 'https://twitter.com/micro1dev', icon: SiX },
-    { name: 'WhatsApp', href: 'https://wa.me/message/micro1', icon: SiWhatsapp },
-    { name: 'Telegram', href: 'https://t.me/micro1dev', icon: SiTelegram },
+    socialLinks.twitter,
+    socialLinks.whatsapp,
+    socialLinks.telegram,
   ],
 };
 
@@ -97,29 +95,29 @@ export default function Footer() {
             <h3 className="font-semibold text-sm uppercase tracking-wider mb-4">Legal</h3>
             <div className="space-y-3 text-sm text-muted-foreground">
               <p>
-                <strong className="text-foreground">Micro1 Limited</strong>
+                <strong className="text-foreground">{companyInfo.registration.name}</strong>
               </p>
-              <p>RC-8939675</p>
+              <p>{companyInfo.registration.number}</p>
               <p>
-                4 Block 10, Kanfage Street<br />
-                Makera, Kaduna South<br />
-                Kaduna, Nigeria
+                {companyInfo.address.street}<br />
+                {companyInfo.address.area}<br />
+                {companyInfo.address.city}, {companyInfo.address.country}
               </p>
               <a
-                href="mailto:contact@micro1.dev"
+                href={socialLinks.email.href}
                 className="block hover:text-foreground transition-colors"
                 data-testid="link-footer-email"
               >
-                contact@micro1.dev
+                {socialLinks.email.email}
               </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border">
+        <div className="hidden mt-12 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-muted-foreground text-sm">
-              &copy; {currentYear} Micro1 Limited. All rights reserved.
+              &copy; {currentYear} {companyInfo.registration.name}. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
               <a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-privacy">

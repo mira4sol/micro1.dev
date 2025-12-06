@@ -1,14 +1,15 @@
-import { useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { MapPin, Mail, Building2, Clock, Send, CheckCircle } from 'lucide-react';
-import { SiX, SiWhatsapp, SiLinkedin, SiTelegram, SiCalendly } from 'react-icons/si';
+import { Textarea } from '@/components/ui/textarea';
+import { companyInfo, socialLinks } from '@/config/socials';
 import { useToast } from '@/hooks/use-toast';
+import { Building2, CheckCircle, Clock, Mail, MapPin, Send } from 'lucide-react';
+import { useState } from 'react';
+import { SiCalendly, SiTelegram, SiWhatsapp, SiX } from 'react-icons/si';
 
 export default function ContactSection() {
   const { toast } = useToast();
@@ -153,23 +154,23 @@ export default function ContactSection() {
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => window.open('https://twitter.com/micro1dev', '_blank')}
+                    onClick={() => window.open(socialLinks.twitter.href, '_blank')}
                     data-testid="button-twitter"
                   >
                     <SiX className="w-4 h-4" />
                   </Button>
-                  <Button
+                  {/* <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => window.open('https://linkedin.com/company/micro1', '_blank')}
+                    onClick={() => window.open(socialLinks.linkedin.href, '_blank')}
                     data-testid="button-linkedin"
                   >
                     <SiLinkedin className="w-4 h-4" />
-                  </Button>
+                  </Button> */}
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => window.open('https://wa.me/message/micro1', '_blank')}
+                    onClick={() => window.open(socialLinks.whatsapp.href, '_blank')}
                     data-testid="button-whatsapp"
                   >
                     <SiWhatsapp className="w-4 h-4" />
@@ -177,7 +178,7 @@ export default function ContactSection() {
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => window.open('https://t.me/micro1dev', '_blank')}
+                    onClick={() => window.open(socialLinks.telegram.href, '_blank')}
                     data-testid="button-telegram"
                   >
                     <SiTelegram className="w-4 h-4" />
@@ -185,7 +186,7 @@ export default function ContactSection() {
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => window.open('https://calendly.com/micro1', '_blank')}
+                    onClick={() => window.open(socialLinks.calendly.href, '_blank')}
                     data-testid="button-calendly"
                   >
                     <SiCalendly className="w-4 h-4 mr-2" />
@@ -205,10 +206,8 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Office Address</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      4 Block 10, Kanfage Street<br />
-                      Makera, Kaduna South<br />
-                      Kaduna, Nigeria
+                    <p className="text-muted-foreground text-sm leading-relaxed whitespace-pre-line">
+                      {companyInfo.address.fullAddress}
                     </p>
                   </div>
                 </div>
@@ -224,11 +223,11 @@ export default function ContactSection() {
                   <div>
                     <h3 className="font-semibold mb-1">Email Us</h3>
                     <a
-                      href="mailto:contact@micro1.dev"
+                      href={socialLinks.email.href}
                       className="text-muted-foreground text-sm hover:text-primary transition-colors"
                       data-testid="link-email"
                     >
-                      contact@micro1.dev
+                      {socialLinks.email.email}
                     </a>
                   </div>
                 </div>
@@ -244,8 +243,8 @@ export default function ContactSection() {
                   <div>
                     <h3 className="font-semibold mb-1">Company Registration</h3>
                     <p className="text-muted-foreground text-sm">
-                      Micro1 Limited<br />
-                      RC-8939675
+                      {companyInfo.registration.name}<br />
+                      {companyInfo.registration.number}
                     </p>
                   </div>
                 </div>
@@ -261,7 +260,7 @@ export default function ContactSection() {
                   <div>
                     <h3 className="font-semibold mb-1">Quick Response</h3>
                     <p className="text-muted-foreground text-sm">
-                      We typically respond within 24 hours during business days.
+                      {companyInfo.hours}
                     </p>
                   </div>
                 </div>

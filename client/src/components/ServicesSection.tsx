@@ -1,6 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Code2, Blocks, Cpu, Globe, Smartphone, Shield } from 'lucide-react';
+import { Code2, Blocks, Cpu, Globe, Smartphone, Shield, Database, Cloud, Palette, MessageSquare, ShoppingCart, Wrench } from 'lucide-react';
 
 const services = [
   {
@@ -43,6 +43,48 @@ const services = [
     title: 'AI Integration',
     description: 'Integrate intelligent features into your products with machine learning models and AI-powered automation.',
     tags: ['ChatGPT', 'ML Models', 'Automation'],
+    category: 'Web2',
+  },
+  {
+    icon: ShoppingCart,
+    title: 'E-Commerce Solutions',
+    description: 'Complete online store solutions with payment processing, inventory management, and seamless checkout experiences.',
+    tags: ['Shopify', 'WooCommerce', 'Stripe'],
+    category: 'Web2',
+  },
+  {
+    icon: Database,
+    title: 'Database Design',
+    description: 'Scalable database architecture and optimization for high-performance applications that handle millions of records.',
+    tags: ['PostgreSQL', 'MongoDB', 'Redis'],
+    category: 'Web2',
+  },
+  {
+    icon: Cloud,
+    title: 'Cloud Infrastructure',
+    description: 'Deploy and manage cloud infrastructure with DevOps best practices for reliable, scalable applications.',
+    tags: ['AWS', 'Docker', 'Kubernetes'],
+    category: 'Web2',
+  },
+  {
+    icon: Palette,
+    title: 'UI/UX Design',
+    description: 'Beautiful, intuitive interfaces that delight users and drive engagement through thoughtful design principles.',
+    tags: ['Figma', 'Prototyping', 'User Research'],
+    category: 'Web2',
+  },
+  {
+    icon: MessageSquare,
+    title: 'Chatbot Development',
+    description: 'Intelligent conversational agents that automate customer support and enhance user engagement.',
+    tags: ['Telegram Bots', 'Discord Bots', 'WhatsApp'],
+    category: 'Web2',
+  },
+  {
+    icon: Wrench,
+    title: 'Maintenance & Support',
+    description: 'Ongoing technical support, bug fixes, and feature updates to keep your applications running smoothly.',
+    tags: ['24/7 Support', 'Bug Fixes', 'Updates'],
     category: 'Web2',
   },
 ];

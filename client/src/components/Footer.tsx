@@ -1,4 +1,4 @@
-import { SiGithub, SiLinkedin, SiX } from 'react-icons/si';
+import { SiGithub, SiLinkedin, SiX, SiWhatsapp, SiTelegram } from 'react-icons/si';
 
 const navigation = {
   services: [
@@ -13,9 +13,11 @@ const navigation = {
     { name: 'Contact', href: '#contact' },
   ],
   social: [
-    { name: 'GitHub', href: '#', icon: SiGithub },
-    { name: 'LinkedIn', href: '#', icon: SiLinkedin },
-    { name: 'X', href: '#', icon: SiX },
+    { name: 'GitHub', href: 'https://github.com/micro1dev', icon: SiGithub },
+    { name: 'LinkedIn', href: 'https://linkedin.com/company/micro1', icon: SiLinkedin },
+    { name: 'X', href: 'https://twitter.com/micro1dev', icon: SiX },
+    { name: 'WhatsApp', href: 'https://wa.me/message/micro1', icon: SiWhatsapp },
+    { name: 'Telegram', href: 'https://t.me/micro1dev', icon: SiTelegram },
   ],
 };
 

@@ -128,22 +128,38 @@ export default function ContactSection() {
                     />
                   </div>
                   
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full sm:w-auto"
-                    disabled={isSubmitting}
-                    data-testid="button-submit-contact"
-                  >
-                    {isSubmitting ? (
-                      <>Sending...</>
-                    ) : (
-                      <>
-                        Send Message
-                        <Send className="ml-2 h-4 w-4" />
-                      </>
-                    )}
-                  </Button>
+                  <div className="flex flex-col sm:flex-row items-center gap-4">
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full sm:w-auto"
+                      disabled={isSubmitting}
+                      data-testid="button-submit-contact"
+                    >
+                      {isSubmitting ? (
+                        <>Sending...</>
+                      ) : (
+                        <>
+                          Send Message
+                          <Send className="ml-2 h-4 w-4" />
+                        </>
+                      )}
+                    </Button>
+                    
+                    <span className="text-muted-foreground text-sm">or</span>
+                    
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="lg"
+                      className="w-full sm:w-auto"
+                      onClick={() => window.open('https://calendly.com/micro1', '_blank')}
+                      data-testid="button-calendly"
+                    >
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Book on Calendly
+                    </Button>
+                  </div>
                 </form>
               )}
             </CardContent>
@@ -216,29 +232,6 @@ export default function ContactSection() {
                     <p className="text-muted-foreground text-sm">
                       We typically respond within 24 hours during business days.
                     </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-card-border">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-md bg-primary/10">
-                    <Calendar className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold mb-2">Book a Session</h3>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-full"
-                      onClick={() => window.open('https://calendly.com/micro1', '_blank')}
-                      data-testid="button-calendly"
-                    >
-                      <Calendar className="w-4 h-4 mr-2" />
-                      Schedule on Calendly
-                    </Button>
                   </div>
                 </div>
               </CardContent>

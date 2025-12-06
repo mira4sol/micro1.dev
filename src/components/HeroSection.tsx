@@ -1,8 +1,8 @@
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import heroBackground from '@assets/generated_images/tech_innovation_hero_background.png';
+import { ArrowRight, Sparkles } from 'lucide-react';
+// import heroBackground from '@assets/generated_images/tech_innovation_hero_background.png';
 
 interface HeroSectionProps {
   onGetStarted?: () => void;
@@ -33,7 +33,7 @@ export default function HeroSection({ onGetStarted, onViewProjects }: HeroSectio
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <motion.div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
+        style={{ backgroundImage: `url(/tech_innovation_hero_background.png)` }}
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}

@@ -53,7 +53,7 @@ export default function Navigation({ onNavigate }: NavigationProps) {
           >
             Micro<span className="text-primary">1</span>
           </a> */}
-          <Link href='/' className='h-11 w-11'>
+          <Link href='/' className='h-5 w-5 md:h-11 md:w-11'>
           <img  src='/logo-white.png' alt="logo" />
           </Link>
 

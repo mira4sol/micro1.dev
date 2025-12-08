@@ -1,4 +1,5 @@
 import { companyInfo, socialLinks } from '@/config/socials';
+import { Link } from 'wouter';
 
 const navigation = {
   services: [
@@ -36,9 +37,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           <div className="lg:col-span-1">
-            <a href="#" className="font-display text-2xl font-bold tracking-tight" data-testid="link-footer-home">
+            {/* <a href="#" className="font-display text-2xl font-bold tracking-tight" data-testid="link-footer-home">
               Micro<span className="text-primary">1</span>
-            </a>
+            </a> */}
+            <Link href="/" className="h-5 w-5 md:h-8 md:w-8">
+            <img  src='/logo-full-white.png' alt="logo" />
+            </Link>
             <p className="mt-4 text-muted-foreground text-sm leading-relaxed">
               Transforming ideas into digital products. We specialize in Web2 and Web3 solutions that drive innovation.
             </p>

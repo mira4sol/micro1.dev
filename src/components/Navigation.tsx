@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link } from 'wouter';
 
 interface NavigationProps {
   onNavigate?: (section: string) => void;
@@ -45,13 +46,16 @@ export default function Navigation({ onNavigate }: NavigationProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a
+          {/* <a
             href="#"
             className="font-display text-xl md:text-2xl font-bold tracking-tight"
             data-testid="link-home"
           >
             Micro<span className="text-primary">1</span>
-          </a>
+          </a> */}
+          <Link href='/' className='h-11 w-11'>
+          <img  src='/logo-white.png' alt="logo" />
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
